@@ -1,8 +1,10 @@
+import {cart, addToCart, cartQntAmazon, updateCartQnt, cartQntElem} from "../data/cartProducts.js";
+import {products} from "../data/products.js"
 
 let htmlToGenerate =''
 
     products.forEach
-    ((product)=>
+    ( (product)=>
         {
              htmlToGenerate += `<div class="product-container">
           <div class="product-image-container">
@@ -16,7 +18,7 @@ let htmlToGenerate =''
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="images/ratings/rating-${product.rating.stars*10}.png">
+              src="images/ratings/rating-${product.rating.stars * 10}.png">
             <div class="product-rating-count link-primary">
               ${product.rating.count}
             </div>
@@ -44,7 +46,7 @@ let htmlToGenerate =''
           <div class="product-spacer"></div>
 
           <div class="added-to-cart">
-            <img alt="${products.name}" src="images/icons/checkmark.png">
+            <img alt="${products.name}" src="../images/icons/checkmark.png">
             Added
           </div>
 
@@ -60,44 +62,23 @@ let htmlToGenerate =''
 let prodGridElem = document.querySelector('.js-products-grid');
 prodGridElem.innerHTML=htmlToGenerate;
 
-const cartQntElem=document.querySelector('.js-cart-quantity');
-
 
 document.querySelectorAll('.js-addToCartBtn').forEach ((button)=> {
     button.addEventListener('click',()=> {
+
         const productId=button.dataset.productId
         const productName=button.dataset.productName
 
-        let existingItem
+        addToCart(productId,productName);
+        updateCartQnt();
 
-        cart.forEach((product)=>{
-            if(product.id === productId){existingItem=product;}
-        })
-
-        if(existingItem){existingItem.quantity++}
-        else
-        {
-                cart.push(
-                    {
-                        id : productId,
-                        name : productName,
-                        quantity : 1
-                    }
-                )
-        }
-
-        let cartTotNum=0;
-        cart.forEach((item)=>{
-            cartTotNum += item.quantity;
-        })
-        cartQntElem.innerHTML=cartTotNum;
 
         console.log(cart)
-
         });
     });
 
 
+cartQntElem.innerHTML=cartQntAmazon();
 
 
 

@@ -29,8 +29,8 @@
         </div>
 
         <div class="checkout-header-middle-section">
-          Checkout (<a class="return-to-home-link"
-            href="amazon.html">3 items</a>)
+          Checkout (<a class="js-checkout-items-number return-to-home-link"
+            href="amazon.html"></a>)
         </div>
 
         <div class="checkout-header-right-section">
@@ -43,7 +43,7 @@
       <div class="page-title">Review your order</div>
 
       <div class="checkout-grid">
-        <div class="order-summary">
+        <div class="js-order-summary order-summary">
           <div class="cart-item-container">
             <div class="delivery-date">
               Delivery date: Tuesday, June 21
@@ -64,10 +64,10 @@
                   <span>
                     Quantity: <span class="quantity-label">2</span>
                   </span>
-                  <span class="update-quantity-link link-primary">
+                  <span class="js-updateBtn update-quantity-link link-primary" >
                     Update
                   </span>
-                  <span class="delete-quantity-link link-primary">
+                  <span class="js-deleteBtn delete-quantity-link link-primary">
                     Delete
                   </span>
                 </div>
@@ -231,5 +231,7 @@
         </div>
       </div>
     </div>
+
+    <script type="module" src="./scripts/checkout.js"></script>
   </body>
 </html>
